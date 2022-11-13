@@ -13,7 +13,7 @@ type Query {
   @rest(
     endpoint: "https://ups-clone-cdbe9-default-rtdb.firebaseio.com/customers/$id.json"
   )
-  getCustomer: [CustomerList]
+  getCustomers: [CustomerList]
     @rest(
       endpoint: "https://ups-clone-cdbe9-default-rtdb.firebaseio.com/customers.json"
       transforms: [{pathpattern:[], editor: "objectToArray"}]
