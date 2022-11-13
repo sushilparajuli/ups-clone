@@ -4,7 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import CustomersScreen from '../screens/CustomersScreen';
 import OrdersScreen from '../screens/OrdersScreen';
 import { useNavigation } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 
+const CUSTOMERS = "Customers"
+const ORDERS = "Orders"
 
 export type TabStackParamList = {
   Customers: undefined;
@@ -23,9 +26,25 @@ const TabNavigator = () => {
   }, []);
 
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Customers" component={CustomersScreen} />
-      <Tab.Screen name="Orders" component={OrdersScreen} />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: "#59C1CC",
+        tabBarInactiveTintColor: "gray",
+        tabBarIcon: ({ focused, color, size }) => {
+          if (route.name === CUSTOMERS) {
+            return (
+              <Icon name="users" type="entypo" color = {focused ?  "#59C1CC" : "gray" } />
+            )
+          } else if (route.name === ORDERS) {
+            return (
+              <Icon name="box" type="entypo" color = {focused ?  "#EB6A7C" : "gray" } />
+            )
+          }
+        }
+      })}
+      >
+      <Tab.Screen name={CUSTOMERS} component={CustomersScreen} />
+      <Tab.Screen name={ORDERS} component={OrdersScreen} />
     </Tab.Navigator>
   );
 }
