@@ -3,7 +3,7 @@ type Customer = {
   name: string;
 }
 
-type CustomerList = {
+type CustomerResponse = {
   name: ID;
   value: Customer;
 }
